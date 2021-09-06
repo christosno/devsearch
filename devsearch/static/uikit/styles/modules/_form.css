@@ -36,10 +36,11 @@
   text-indent: -9999px;
 }
 
-input.input[type='text'],
-input.input[type='email'],
-input.input[type='password'],
-input.input[type='number'],
+input.input[type="text"],
+input.input[type="email"],
+input.input[type="password"],
+input.input[type="number"],
+select.input,
 textarea.input {
   min-width: 24rem;
   width: 100%;
@@ -50,15 +51,16 @@ textarea.input {
   background-color: var(--color-bg);
 }
 
-input.input[type='text']:focus,
-input.input[type='email']:focus,
-input.input[type='password']:focus,
-input.input[type='number']:focus,
-input.input[type='text']:active,
-input.input[type='email']:active,
-input.input[type='password']:active,
-input.input[type='number']:active,
-select.input,
+input.input[type="text"]:focus,
+input.input[type="email"]:focus,
+input.input[type="password"]:focus,
+input.input[type="number"]:focus,
+input.input[type="text"]:active,
+input.input[type="email"]:active,
+input.input[type="password"]:active,
+input.input[type="number"]:active,
+select.input:focus,
+select.input:active,
 textarea.input:focus,
 textarea.input:active {
   outline: none;
@@ -110,7 +112,7 @@ textarea.input:active {
 .input.input--checkbox::before {
   transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
   transform: rotate(-45deg) scale(0, 0);
-  content: '';
+  content: "";
   position: absolute;
   left: 4px;
   top: 1.4px;
@@ -127,7 +129,7 @@ textarea.input:active {
 }
 
 .input.input--checkbox::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -3px;
@@ -146,7 +148,7 @@ textarea.input:active {
 .input.input--radio::before {
   transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
   transform: scale(0, 0);
-  content: '';
+  content: "";
   position: absolute;
   left: 3.5px;
   top: 2.5px;
@@ -162,7 +164,7 @@ textarea.input:active {
 }
 
 .input.input--radio::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -0.25rem;
   left: -0.125rem;
