@@ -1,16 +1,18 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Project
+from .models import Project, Tag
 from .forms import ProjectForm
+from .utils import searcProject
 
 
 def projects(request):
 
-    projects = Project.objects.all()
-   
+    projects, search_query = searcProject(request)
+
     context = {
-        'projects':projects,
+        'projects' : projects,
+        'search_query' : search_query,
     }
     return render(request, 'projects/projects.html', context)
 
