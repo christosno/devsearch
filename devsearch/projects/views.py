@@ -1,18 +1,23 @@
+from django.core import paginator
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Project, Tag
 from .forms import ProjectForm
-from .utils import searcProject
+from .utils import searcProject, paginationProjects
 
 
 def projects(request):
 
     projects, search_query = searcProject(request)
 
+    # add paginator 
+    custom_range, projects = paginationProjects(request, projects, 6) 
+
     context = {
         'projects' : projects,
         'search_query' : search_query,
+        'custom_range' : custom_range,
     }
     return render(request, 'projects/projects.html', context)
 

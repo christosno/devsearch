@@ -7,7 +7,7 @@ from django.urls import conf
 from django.db.models import Q
 from .models import Profile
 from .forms import CustomUserCreationForm, ProfileForm ,SkillForm
-from .utils import searchProfiles
+from .utils import searchProfiles, paginationProfiles
 
 
 def loginUser(request):
@@ -35,10 +35,14 @@ def loginUser(request):
 
     return render(request, 'users/login_register.html')
 
+
+
 def logoutUser(request):
     logout(request)
     messages.info(request, 'User was logged out.')
     return redirect('login')
+
+
 
 def registerUser(request):
     page = 'register'
@@ -66,15 +70,21 @@ def registerUser(request):
 
     return render(request, 'users/login_register.html', context)
 
+
+
 def profiles(request):
 
     profiles, search_query = searchProfiles(request)
+    custom_range, profiles = paginationProfiles(request, profiles, 3)
 
     context = {
         'profiles':profiles,
         'search_query' : search_query,
+        'custom_range' : custom_range,
     }
     return render(request, 'users/profiles.html', context)
+
+
 
 def userProfile(request, pk):
     profile = Profile.objects.get(id=pk)
@@ -89,6 +99,8 @@ def userProfile(request, pk):
     }
     return render(request, 'users/user-profile.html',context)
 
+
+
 @login_required(login_url='login')
 def userAccount(request):
     profile = request.user.profile
@@ -102,6 +114,7 @@ def userAccount(request):
         'projects' : projects
     }
     return render(request, 'users/account.html', context)
+
 
 
 @login_required(login_url='login')
@@ -119,6 +132,7 @@ def editAccount(request):
         'form':form
     }
     return render(request, 'users/profile_form.html', context)
+
 
 
 @login_required(login_url='login')
