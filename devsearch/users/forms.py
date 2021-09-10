@@ -45,3 +45,5 @@ class SkillForm(ModelForm):
 
         for name, filed in self.fields.items():
             filed.widget.attrs.update({'class':'input'})
+
+
