@@ -21,7 +21,7 @@ form.addEventListener("submit", (e) => {
       if (data.access) {
         localStorage.setItem("token", data.access);
         window.location =
-          "file:///C:/Users/chris/Desktop/frontent_django_project/projects-list.html";
+          "file:///C:/Users/chris/Desktop/django_project/devsearch/frontent_django_project/projects-list.html";
       } else {
         alert("Username or password did not work");
       }

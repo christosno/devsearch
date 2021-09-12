@@ -13,7 +13,7 @@ logoutBtn.addEventListener("click", (e) => {
   e.preventDefault();
   localStorage.removeItem("token");
   window.location =
-    "file:///C:/Users/chris/Desktop/frontent_django_project/login.html";
+    "file:///C:/Users/chris/Desktop/django_project/devsearch/frontent_django_project/login.html";
 });
 
 let projectsUrl = "http://127.0.0.1:8000/api/projects/";
